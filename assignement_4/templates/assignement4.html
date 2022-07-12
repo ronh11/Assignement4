@@ -1,0 +1,63 @@
+{% extends 'CreateContact.html' %}
+{% block assi4 %}
+    <br>
+    <form class="assi4_forms" action="/insert_user" method="post">
+    <h1 style="margin-left: 135px" >Insert Form</h1>
+    <h2>Name:</h2>
+    <input type="text" name="name" placeholder="Name">
+    <h2>Last Name:</h2>
+    <input type="text" name="lastname" placeholder="Last Name">
+    <h2>Email:</h2>
+    <input type="email" name="email" placeholder="Email"> <br><br>
+    <input type="submit" value="insert" class="searchbutton">
+        {% if messeage34 %}
+                   <h3> {{ messeage34 }}</h3>
+        {% endif %}
+
+    <br>
+    </form> <br>
+        <form  class="assi4_forms" action="/update_user" method="post">
+            <h1 style="margin-left: 135px">Update User</h1>
+            <label id="user_name_update" for="user_name_update">username for update</label><br>
+            <input type="text" name="user_name_update" required placeholder="username"><br>
+            <label id="user_lastname_update" for="user_lastname_update"> new last name</label><br>
+            <input type="text" name="user_lastname_update" placeholder="Last Name" ><br>
+            <label id="user_email_update" for="user_email_update"> new email</label><br>
+            <input type="email" name="user_email_update" placeholder="Email"> <br><br>
+            <input type="submit" value="update" class="searchbutton">
+            <br>
+            {% if messeage36 %}
+        <h3>{{ messeage36 }}</h3>
+        {% endif %}
+        </form>
+    <br>
+<div class="assi4_forms">
+
+     <form >
+     <h2> List Of Users</h2>
+          {% for user in users %}
+        <div class="userslist" >
+        <h2>Name: {{ user.name }}</h2>
+        <h3> Last Name: {{ user.LastName }}</h3>
+        <h4> Email: {{ user.email }}</h4>
+        </div>
+
+<br>
+     </form>
+
+
+    <form   action="/delete_user" method="post">
+    <input type="hidden" name=user_id value="{{ user.name }}">
+    <input type="submit" value="delete" class="searchbutton">
+    </form>
+              <br>
+
+
+
+    {% endfor %}
+{% if messeage35 %}
+           <h3> {{ messeage35 }}</h3>
+{% endif %}
+
+</div>
+{% endblock %}

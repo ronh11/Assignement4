@@ -1,0 +1,63 @@
+{% extends 'CreateContact.html' %}
+{% include('include_css.html') %}
+{% include('include_js.html') %}
+{% block assignement3_2 %}
+    <body background="../static/img/backgroundphoto.jpg" class="searchclass">
+    <form method="GET" action="/assignement3_2" class="searchform">
+        <br>
+
+        <h2 style="color:white">Search Form</h2>
+        <label>Name</label><br>
+        <input name="username" type="text" ><br>
+        <label>Last Name</label><br>
+        <input name="lastname" type="text" ><br>
+        <label>Email</label><br>
+        <input name="email" type="text" ><br><br>
+        <input type="submit" value="search" class="searchbutton">
+        <br> <br>
+    </form>
+    <br>
+
+    {% if username and lastname and email %}
+        <h2>User Name:{{ username }}</h2>
+        <h3> Last Name: {{ lastname }}</h3>
+        <h3>Email:{{ email | lower }}</h3>
+    {% endif %}
+    {% if messeage %}
+        <ol>
+            <h1 class="h1111">{{ messeage }}  </h1>
+
+            <h2>Users List:</h2>
+            {% for k,v in users_dict.items() %}
+                <li>{{ k }}</li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+
+    {% if session['username1'] %}
+        <h2>Welcome {{ session['username1'] }},<br>Thank you for your registration!</h2>
+        <br>
+      {% else %}
+         <form  class="logginform" method="post" action="/assignement3_2">
+        <h2 style="color:white">Registration Form</h2>
+        <label>Name</label><br>
+        <input name="username1" type="text"><br>
+        <label>Password</label><br>
+        <input name="password" type="password" required><br><br>
+        <input type="submit" class="searchbutton">
+       <br> <br>
+    </form>
+
+
+    {% endif %}
+    {% if messeage2 %}
+       {{ messeage2 }}
+    {% endif %}
+    {% if messeage4 %}
+        {{ meesage4 }}
+
+    {% endif %}
+    <br>
+    </body>
+
+{% endblock %}

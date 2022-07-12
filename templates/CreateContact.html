@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    {% include('include_css.html') %}
+    {% include('include_js.html') %}
+    <title>Document</title>
+</head>
+
+<body background="../static/img/backgroundphoto.jpg">
+<nav id="navbar">
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo" id="logo1">Ron Hazan Website</label>
+
+
+    <ul>
+        <li><a href="{{ url_for('Homepage') }}">Home</a></li>
+        <li><a href="{{ url_for('About') }}">About</a></li>
+        <li><a href="{{ url_for('assignement3_1') }}">assi3.1</a></li>
+        <li><a class="animation" href="{{ url_for('CreateContact') }}">Contact</a></li>
+        <li><a href="{{ url_for('assignement3_2fc') }}">assi3.2</a></li>
+        <li><a href="{{ url_for('assignement4.assi4_func') }}">Assi_4</a></li>
+        <li><a href="{{ url_for('assignement4.users_listjs') }}">JsonUsers</a></li>
+        <li><a href="{{ url_for('assignement4.outer_source_funct') }}">Outer Source</a></li>
+        <li><a href="{{ url_for('assignement4.restapi_func') }}">Restapi</a></li>
+
+
+
+
+        {% if session['username1'] %}
+            <li><a href="{{ url_for('log_outfc') }}">LogOut</a></li>
+        {% endif %}
+
+    </ul>
+</nav>
+{% if session['username1'] %}
+    <h5 class="usergreeting">Welcome,{{ session['username1'] }}</h5>
+{% endif %}
+{% block outer_source %}
+    {% block about %}
+        {% block assi4 %}
+
+            {% block assignement3_2 %}
+
+                {% block assignement3_1 %}
+
+                    <div class="container">
+                        <h1>Contact</h1>
+                        <div id="arrow">&#8595</div>
+
+
+                        <div class="buttons">
+
+                            <form id="item1" action="URL" method="post">
+                                <label for="Full name">Full name</label><br>
+                                <input type="text" id="Full name" name="Full name" autocomplete="on" required><br>
+                                <label for="email">Email</label><br>
+                                <input type="email" id="email" name="email"><br>
+                                <label for="text">City</label><br>
+                                <input type="text" id="City" name="City"><br>
+                                <label for="text">Phone Number</label><br>
+                                <input type="text" id="Phone Number" name="Phone Number"><br>
+
+                                <div class="select">
+                                    <select name="format" id="format">
+                                        <option selected disabled>
+                                            Gender
+                                        </option>
+                                        <option value="Male" Male>Male</option>
+                                        <option value="Female" Female>Female</option>
+                                        <option value="Other" Other>Other</option>
+
+                                    </select>
+
+                                </div>
+                                <br>
+                                <input type="submit"><br>
+                                <label for="agree">I agree</label>
+                                <input type="checkbox" id="agree" name="agree" required>
+                            </form>
+                        </div>
+
+
+                    </div>
+                {% endblock %}
+            {% endblock %}
+        {% endblock %}
+    {% endblock %}
+{% endblock %}
+
+
+</body>
+
+</html>

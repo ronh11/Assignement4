@@ -1,0 +1,44 @@
+{% include('include_css.html') %}
+{% include('include_js.html') %}
+{%  extends 'CreateContact.html'%}
+  {% block assignement3_1 %}
+
+<body background="../static/img/backgroundphoto.jpg" class="assi3_1">
+
+  {% if curr_user %}
+    <h1 class="h1assi3_1">Welcome {{ curr_user.firstname }} {{ curr_user.lastname }}</h1>
+      <img src="../static/img/welcome-message-1.jpg" height="250px" width="250px">
+
+  {% else %}
+  <h1 >Welcome Stranger</h1>
+  {% endif %}
+
+      <br>
+<h1 class="assi3_1rh">This is {{ name | upper}} hobbies list:</h1>
+      <p id="demo">
+      <ul>
+    {% for hobbie in hobbies %}
+    <li><h2 id="test">  {{hobbie}}</h2></li>
+    {% endfor %}
+</ul>
+
+      </p>
+       <script>
+      var i = 0;
+      var txt = 'My Hobbies Are:';
+      var speed = 50;
+
+      function typeWriter() {
+        if (i < txt.length) {
+          document.getElementById("demo").innerHTML += txt.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+
+
+      }
+      </script>
+
+
+{% endblock %}
+</body>

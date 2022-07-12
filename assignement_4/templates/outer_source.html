@@ -1,0 +1,31 @@
+{% extends 'CreateContact.html' %}
+
+{% block outer_source %}
+    <h1>Front & Back Form</h1>
+      <div class="assi4_forms1">
+        <form id="frontend-request" onsubmit="event.preventDefault()">
+            <h3>Enter User ID</h3>
+            <input id="user_number" type="number" name="user_number" required>
+            <button class="searchbutton" onclick="getUser()"> Submit</button>
+        </form>
+
+
+
+        <form id="backend-request"  action="/assignement4/outer_source/fetch_from_backend" method="get">
+            <h3>Enter User ID from Back</h3>
+            <input id="user_id_back" type="number" name="user_id_back" required>
+            <input type="submit" class="searchbutton" value="Submit"/>
+        </form>
+    </div>
+
+    <div id="place_holder_for_response"></div>
+    <br>
+
+    {% if request_data %}
+        <h3> {{request_data.first_name}} {{request_data.last_name}} </h3>
+        <h4> {{request_data.email}} </h4>
+        <img src="{{request_data.avatar}}" alt="Profile Picture"/>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    {% include('include_css.html') %}
+    {% include('include_js.html') %}
+
+
+    <title>Document</title>
+</head>
+
+<body>
+<nav id="navbar2">
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo" id="logo1">Ron Hazan Website </label>
+    <ul>
+        <li><a href="{{ url_for('Homepage') }}">Home</a></li>
+        <li><a href="{{ url_for('About') }}">About</a></li>
+        <li><a href="{{ url_for('assignement3_1') }}">assi3.1</a></li>
+        <li><a class="animation" href="{{ url_for('CreateContact') }}">Contact</a></li>
+        <li><a href="{{ url_for('assignement3_2fc') }}">assi3.2</a></li>
+        <li><a href="{{ url_for('assignement4.assi4_func') }}">Assi_4</a></li>
+        <li><a href="{{ url_for('assignement4.users_listjs') }}">JsonUsers</a></li>
+        <li><a href="{{ url_for('assignement4.outer_source_funct') }}">Outer Source</a></li>
+        <li><a href="{{ url_for('assignement4.restapi_func') }}">Restapi</a></li>
+
+
+
+
+        {% if session['username1'] %}
+            <li><a href="{{ url_for('log_outfc') }}">LogOut</a></li>
+
+        {% endif %}
+
+
+    </ul>
+</nav>
+
+<section>{% if session['username1'] %}
+    <h5 style="color: white" class="usergreeting">Welcome,{{ session['username1'] }}</h5>
+{% endif %}</section>
+
+
+</body>
+
+</html>
